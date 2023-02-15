@@ -1,8 +1,8 @@
 import {dbank} from "../../declarations/dbank";
 
 window.addEventListener("load", async function(){
-    const currentAmount =await dbank.checkBalance();
-    document.getElementById("value").innerText = currentAmount.toFixed(2);
+
+    update();
 });
 
 document.querySelector("form").addEventListener("submit", async function (event){
@@ -23,9 +23,9 @@ document.querySelector("form").addEventListener("submit", async function (event)
 
     await dbank.compound();
 
+    update();
 
-    const currentAmount =await dbank.checkBalance();
-    document.getElementById("value").innerText = currentAmount.toFixed(2);
+
     document.getElementById("input-amount").value="";
     document.getElementById("withdrawal-amount").value="";
     button.removeAttribute("disabled");
@@ -35,4 +35,8 @@ document.querySelector("form").addEventListener("submit", async function (event)
 
 });
 
-async function update
+async function update(){
+
+    const currentAmount =await dbank.checkBalance();
+    document.getElementById("value").innerText = currentAmount.toFixed(2);
+}
