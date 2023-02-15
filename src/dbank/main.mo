@@ -5,8 +5,10 @@ import Float "mo:base/Float";
 
 actor DBank{
    stable var currentValue: Float = 300;
+   //currentValue :=300;
 
    stable var startTime = Time.now();
+   //startTime := Time.now();
 
    
    public func topup(amount: Float){
@@ -31,7 +33,8 @@ actor DBank{
       let currentTime = Time.now();
       let timeElapsedNS= currentTime - startTime;
       let timeElapsedS = timeElapsedNS/1000000000;
-      currentValue := currentValue * (1.01 ** Float.fromInt(timeElapsedS));
+      let timeElapsedH =  (timeElapsedS/60)/60;
+      currentValue := currentValue * (1.01 ** Float.fromInt(timeElapsedH));
       startTime := currentTime;
    };
 }
