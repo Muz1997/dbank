@@ -1,4 +1,5 @@
 import Debug "mo:base/Debug";
+import Nat "mo:base/Nat";
 
 actor DBank{
    var currentValue = 300;
@@ -21,5 +22,8 @@ actor DBank{
       }else{
          Debug.print("Insuficient Balance")
       }
+   };
+   public query func checkBalance(): async Nat{
+      return currentValue;
    };
 }
